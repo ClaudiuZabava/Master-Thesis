@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.osmaintenance.ui.PopupController"
+            prefWidth="300" prefHeight="400"
+            styleClass="popup-background"
+            stylesheets="@../styles/theme.css">
+
+    <VBox spacing="10" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
+        <Label text="OS-Maintenance Quick Menu" styleClass="popup-title" alignment="CENTER" />
+
+        <!-- Stacked vertically -->
+        <VBox spacing="15" alignment="CENTER">
+            <Button text="Quick Clean" fx:id="btnQuickClean" styleClass="popup-button" maxWidth="Infinity"/>
+            <Button text="Check Performance" fx:id="btnOpenPerformance" styleClass="popup-button" maxWidth="Infinity"/>
+            <Button text="Get Updates" fx:id="btnOpenUpdates" styleClass="popup-button" maxWidth="Infinity"/>
+        </VBox>
+
+        <Pane VBox.vgrow="ALWAYS" />
+
+        <Button text="Exit Application" fx:id="btnExit" styleClass="exit-button"/>
+    </VBox>
+
+</AnchorPane>

@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="800.0" prefWidth="1000.0" styleClass="main-background" stylesheets="@../styles/theme.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.osmaintenance.ui.MainController">
+
+  <!-- Top Bar -->
+  <top>
+    <VBox>
+      <!-- Custom Window Bar -->
+      <HBox spacing="10" styleClass="custom-title-bar">
+        <Label styleClass="top-header" text="OS Maintenance" />
+        <Pane HBox.hgrow="ALWAYS" /> <!-- pushes buttons to the right -->
+        <Button fx:id="btnMinimize" styleClass="window-button" text="—" />
+        <Button fx:id="btnClose" styleClass="window-button" text="✕" />
+      </HBox>
+    </VBox>
+  </top>
+
+  <!-- Main Tab Content -->
+  <center>
+    <TabPane fx:id="tabPane" styleClass="tab-pane" tabClosingPolicy="UNAVAILABLE">
+      <tabs>
+        <!-- System Cleaner -->
+        <Tab text="Cleaner">
+          <HBox spacing="20" styleClass="tab-content">
+
+            <!-- Left Sidebar Box -->
+            <VBox styleClass="sidebar-box" VBox.vgrow="NEVER">
+            <!-- Left Sidebar Panel Buttons -->
+              <VBox fx:id="sidebar" styleClass="sidebar" VBox.vgrow="NEVER">
+                <Button fx:id="btnJunkFiles" maxWidth="Infinity" styleClass="sidebar-button" text="Junk Files">
+                           <graphic>
+                              <FontAwesomeIconView boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" glyphName="TRASH" size="20" wrappingWidth="25.0" />
+                           </graphic>
+                        </Button>
+                <Button fx:id="btnDuplicateFiles" maxWidth="Infinity" styleClass="sidebar-button" text="Duplicate Files">
+                           <graphic>
+                              <FontAwesomeIconView boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" glyphName="CLONE" size="20" wrappingWidth="25.0" />
+                           </graphic></Button>
+                <Button fx:id="btnUnusedApps" maxWidth="Infinity" styleClass="sidebar-button" text="Unused Apps">
+                           <graphic>
+                              <FontAwesomeIconView boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" glyphName="HOURGLASS" size="20" wrappingWidth="25.0" />
+                           </graphic></Button>
+              </VBox>
+            </VBox>
+
+            <!-- Right Content Panel -->
+            <StackPane fx:id="cleanerContentPanel" styleClass="popup-background">
+              <VBox fx:id="junkFilesPane" managed="true" prefWidth="750.0" spacing="15">
+                        <children>
+                           <GridPane fx:id="junkTopGrid" gridLinesVisible="true" prefWidth="750.0" styleClass="cleaner-top-grid">
+                              <columnConstraints>
+                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" />
+                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                 <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                              <children>
+                                  <StackPane alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                      <ImageView blendMode="SCREEN" fitHeight="90.0" fitWidth="90.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+                                          <image>
+                                              <Image url="@../images/trash-bin.png" />
+                                          </image>
+                                      </ImageView>
+                                  </StackPane>
+                                  <StackPane alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                      <VBox alignment="CENTER">
+                                          <HBox alignment="CENTER">
+                                              <Label fx:id="totalTempSize" styleClass="storage-number" text="0" />
+                                              <Label fx:id="totalTempUnit" styleClass="storage-unit" text=" GB" />
+                                          </HBox>
+                                          <Label styleClass="storage-label" text="Selected" />
+                                      </VBox>
+                                  </StackPane>
+                              </children>
+                           </GridPane>
+                           <GridPane gridLinesVisible="true">
+                             <columnConstraints>
+                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" />
+                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" />
+                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" />
+                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" />
+                             </columnConstraints>
+                             <rowConstraints>
+                               <RowConstraints minHeight="50.0" vgrow="SOMETIMES" />
+                               <RowConstraints minHeight="50.0" vgrow="SOMETIMES" />
+                               <RowConstraints minHeight="50.0" vgrow="SOMETIMES" />
+                               <RowConstraints minHeight="50.0" vgrow="SOMETIMES" />
+                             </rowConstraints>
+                              <children>
+                                 <CheckBox fx:id="tempFilesCheckbox" disable="true" mnemonicParsing="false" text="Temporary Files" textFill="WHITE" GridPane.rowIndex="0">
+                                    <font>
+                                       <Font size="18.0" />
+                                    </font>
+                                    <GridPane.margin>
+                                       <Insets left="15.0" />
+                                    </GridPane.margin></CheckBox>
+                                 <CheckBox fx:id="memoryDumpCheckbox" mnemonicParsing="false" text="Memory Dump Files" textFill="WHITE" GridPane.rowIndex="1">
+                                    <font>
+                                       <Font size="18.0" />
+                                    </font>
+                                    <padding>
+                                       <Insets left="15.0" />
+                                    </padding>
+                                 </CheckBox>
+                                 <CheckBox fx:id="browserCachesCheckbox" mnemonicParsing="false" text="Browser Caches" textFill="#fffdfd" GridPane.rowIndex="2">
+                                    <font>
+                                       <Font size="18.0" />
+                                    </font>
+                                    <padding>
+                                       <Insets left="15.0" />
+                                    </padding>
+                                 </CheckBox>
+                                 <CheckBox fx:id="systemLogsCheckbox" mnemonicParsing="false" text="System Error Logs" textFill="WHITE" GridPane.rowIndex="3">
+                                    <font>
+                                       <Font size="18.0" />
+                                    </font>
+                                    <padding>
+                                       <Insets left="15.0" />
+                                    </padding>
+                                 </CheckBox>
+                                 <Label styleClass="storage-label" text="Size:" GridPane.columnIndex="1" />
+                                 <Label styleClass="storage-label" text="Size:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                 <Label styleClass="storage-label" text="Size:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                 <Label styleClass="storage-label" text="Size:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                  <StackPane GridPane.columnIndex="2" GridPane.rowIndex="0">
+                                      <Label fx:id="cacheSize0" styleClass="storage-label" text=". . ." />
+                                  </StackPane>
+                                  <StackPane alignment="CENTER_LEFT" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                                      <Label fx:id="cacheVolume0" styleClass="scanned-unit" text="B" />
+                                  </StackPane>
+                                  <StackPane GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                          <Label fx:id="cacheSize1" styleClass="storage-label" text=". . . . ." />
+                                  </StackPane>
+                                  <StackPane alignment="CENTER_LEFT" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                      <Label fx:id="cacheVolume1" styleClass="scanned-unit" text="B" />
+                                  </StackPane>
+                                  <StackPane GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                          <Label fx:id="cacheSize2" styleClass="storage-label" text=". . ." />
+                                  </StackPane>
+                                  <StackPane alignment="CENTER_LEFT" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                      <Label fx:id="cacheVolume2" styleClass="scanned-unit" text="B" />
+                                  </StackPane>
+                                  <StackPane GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                          <Label fx:id="cacheSize3" styleClass="storage-label" text=". . ." />
+                                  </StackPane>
+                                  <StackPane alignment="CENTER_LEFT" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                      <Label fx:id="cacheVolume3" styleClass="scanned-unit" text="B" />
+                                  </StackPane>
+                              </children>
+                           </GridPane>
+                           <HBox alignment="CENTER">
+                              <children>
+                                 <Label fx:id="tempAction" alignment="CENTER" text="Scanning...." textAlignment="CENTER" visible="false">
+                                    <font>
+                                       <Font size="20.0" />
+                                    </font>
+                                 </Label>
+                              </children>
+                           </HBox>
+                           <HBox alignment="CENTER">
+                              <children>
+                                 <Label fx:id="tempMessage" alignment="CENTER" text="Message." textAlignment="CENTER" textFill="LIGHTGREEN" visible="false">
+                                    <font>
+                                       <Font size="16.0" />
+                                    </font></Label>
+                              </children>
+                           </HBox>
+                           <HBox fillHeight="true">
+                              <children>
+                                 <Button fx:id="btnScanJunk" prefHeight="60.0" prefWidth="300.0" styleClass="scan-button" text="SCAN">
+                                    <HBox.margin>
+                                       <Insets left="25.0" right="50.0" />
+                                    </HBox.margin>
+                                 </Button>
+                                 <Button fx:id="btnClearJunk" disable="true" prefHeight="60.0" prefWidth="300.0" styleClass="scan-button" text="CLEAR">
+                                    <HBox.margin>
+                                       <Insets left="50.0" right="25.0" />
+                                    </HBox.margin>
+                                 </Button>
+                              </children>
+                              <VBox.margin>
+                                 <Insets top="100.0" />
+                              </VBox.margin>
+                           </HBox>
+                        </children>
+              </VBox>
+
+              <!-- Placeholder for other panes -->
+                <VBox fx:id="duplicateFilesPane" managed="true" prefWidth="750.0" spacing="15" visible="false">
+                    <children>
+                        <GridPane fx:id="duplicateTopGrid" gridLinesVisible="true" prefWidth="750.0" styleClass="cleaner-top-grid">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <StackPane alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                    <ImageView blendMode="SCREEN" fitHeight="80.0" fitWidth="80.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@../images/duplicate-file.png" />
+                                        </image>
+                                    </ImageView>
+                                </StackPane>
+                                <StackPane alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                    <Button fx:id="btnSelectDirectory" styleClass="duplicate-scan-button" text="Select Folder" />
+                                </StackPane>
+                            </children>
+                        </GridPane>
+
+
+                        <!-- Checkbox for "Only filter by name" -->
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <children>
+                                <CheckBox fx:id="onlyFilterByNameCheckbox" text="Filter duplicates by Name only" disable="true" textFill="white" />
+                            </children>
+                        </HBox>
+
+                          <!-- Label to show selected directory -->
+                       <HBox alignment="CENTER">
+                          <children>
+                             <Label fx:id="selectedDirectory" alignment="CENTER" text="Please select a directory" textAlignment="CENTER" textFill="LIGHTGREEN">
+                                <font>
+                                   <Font size="16.0" />
+                                </font>
+                             </Label>
+                          </children>
+                       </HBox>
+
+
+                        <!-- ScrollPane for duplicate entries -->
+                       <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="483.0" styleClass="scroll-pane-duplicates" VBox.vgrow="ALWAYS">
+                         <content>
+                             <VBox fx:id="duplicateEntriesContainer" spacing="5" style="-fx-background-color: transparent; -fx-padding: 10" />
+                         </content>
+                          <VBox.margin>
+                             <Insets />
+                          </VBox.margin>
+                       </ScrollPane>
+                    </children>
+                </VBox>
+
+              <VBox fx:id="unusedAppsPane" managed="true" prefWidth="750.0" spacing="15" visible="false">
+                  <children>
+                      <GridPane fx:id="unusedAppsTopGrid" gridLinesVisible="true" prefWidth="750.0" styleClass="cleaner-top-grid">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                          <children>
+                              <StackPane alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                  <ImageView blendMode="SCREEN" fitHeight="80.0" fitWidth="80.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+                                      <image>
+                                          <Image url="@../images/hourglass.png" />
+                                      </image>
+                                  </ImageView>
+                              </StackPane>
+                              <StackPane alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                  <Button fx:id="btnUnusedSelectDirectory" styleClass="unused-scan-button" text="Select Folder" />
+                              </StackPane>
+                          </children>
+                      </GridPane>
+
+                      <!-- Label to show selected directory -->
+                      <HBox alignment="CENTER">
+                          <children>
+                              <Label fx:id="selectedDirectory2" alignment="CENTER" text="Please select a directory" textAlignment="CENTER" textFill="LIGHTGREEN">
+                                  <font>
+                                      <Font size="16.0" />
+                                  </font>
+                              </Label>
+                          </children>
+                      </HBox>
+
+
+                      <!-- ScrollPane for duplicate entries -->
+                      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="483.0" styleClass="scroll-pane-duplicates" VBox.vgrow="ALWAYS">
+                          <content>
+                              <VBox fx:id="unusedEntriesContainer" spacing="5" style="-fx-background-color: transparent; -fx-padding: 10" />
+                          </content>
+                          <VBox.margin>
+                              <Insets />
+                          </VBox.margin>
+                      </ScrollPane>
+                  </children>
+              </VBox>
+            </StackPane>
+          </HBox>
+        </Tab>
+
+          <Tab text="Performance">
+              <ScrollPane fitToWidth="true" fitToHeight="true" hbarPolicy="NEVER" styleClass="scroll-pane-duplicates" VBox.vgrow="ALWAYS">
+                  <content>
+                      <VBox spacing="15" styleClass="tab-content" style="-fx-padding: 15;">
+                          <Label styleClass="section-title" text="Live System Performance" />
+
+                          <!-- CPU Box -->
+                          <HBox spacing="10" style="-fx-background-color: #2c2f4a; -fx-background-radius: 8; -fx-padding: 15;">
+                              <VBox alignment="CENTER_LEFT" spacing="8">
+                                  <HBox spacing="10">
+                                      <Label text="CPU" style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 16px;" />
+                                      <Label fx:id="cpuNameLabel" text="Name Placeholder" style="-fx-text-fill: lightgray;" />
+                                  </HBox>
+                                  <HBox spacing="10">
+                                      <Label text="Cores" style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 16px;" />
+                                      <Label fx:id="cpuCoresLabel" text="Name Placeholder" style="-fx-text-fill: lightgray;" />
+                                  </HBox>
+                                  <HBox spacing="10">
+                                      <Label text="Threads" style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 16px;" />
+                                      <Label fx:id="cpuThreadsLabel" text="Name Placeholder" style="-fx-text-fill: lightgray;" />
+                                  </HBox>
+                              </VBox>
+                              <HBox fx:id="cpuChartPane" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS" />
+                          </HBox>
+
+                          <!-- GPU Box -->
+                          <HBox spacing="10" style="-fx-background-color: #2c2f4a; -fx-background-radius: 8; -fx-padding: 15;">
+                              <VBox alignment="CENTER_LEFT" spacing="8">
+                                  <HBox spacing="10">
+                                      <Label text="GPU" style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 16px;" />
+                                      <Label fx:id="gpuNameLabel" text="Name Placeholder" style="-fx-text-fill: lightgray;" />
+                                  </HBox>
+                                  <HBox spacing="10">
+                                      <Label text="Dedicated Memory" style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 16px;" />
+                                      <Label fx:id="gpuMemoryLabel" text="Name Placeholder" style="-fx-text-fill: lightgray;" />
+                                  </HBox>
+                              </VBox>
+                              <HBox fx:id="gpuChartPane" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS" />
+                          </HBox>
+
+                          <!-- RAM Box -->
+                          <HBox spacing="10" style="-fx-background-color: #2c2f4a; -fx-background-radius: 8; -fx-padding: 15;">
+                              <VBox alignment="CENTER_LEFT" spacing="8">
+                                  <HBox spacing="10">
+                                      <Label text="RAM" style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 16px;" />
+                                      <Label fx:id="ramNameLabel" text="Name Placeholder" style="-fx-text-fill: lightgray;" />
+                                  </HBox>
+                                  <HBox spacing="10">
+                                      <Label text="Capacity" style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 16px;" />
+                                      <Label fx:id="ramCapacityLabel" text="Name Placeholder" style="-fx-text-fill: lightgray;" />
+                                  </HBox>
+                                  <HBox spacing="10">
+                                      <Label text="Base Speed" style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 16px;" />
+                                      <Label fx:id="ramSpeedLabel" text="Name Placeholder" style="-fx-text-fill: lightgray;" />
+                                  </HBox>
+                                  <HBox spacing="10">
+                                      <Label text="Available Memory" style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 16px;" />
+                                      <Label fx:id="ramUsedLabel" text="Name Placeholder" style="-fx-text-fill: lightgray;" />
+                                  </HBox>
+                              </VBox>
+                              <HBox fx:id="ramChartPane" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS" />
+                          </HBox>
+
+                          <!-- Hard Disk Box -->
+                          <HBox spacing="10" style="-fx-background-color: #2c2f4a; -fx-background-radius: 8; -fx-padding: 15;">
+                              <VBox alignment="CENTER_LEFT" spacing="8">
+                                  <HBox spacing="10">
+                                      <Label text="Disk Model:" style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 16px;" />
+                                      <Label fx:id="diskModelLabel" text="Name Placeholder" style="-fx-text-fill: lightgray;" />
+                                  </HBox>
+                                  <HBox spacing="10">
+                                      <Label text="Total Space" style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 16px;" />
+                                      <Label fx:id="diskTotalLabel" text="Name Placeholder" style="-fx-text-fill: lightgray;" />
+                                  </HBox>
+                                  <HBox spacing="10">
+                                      <Label text="Free Space" style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 16px;" />
+                                      <Label fx:id="diskFreeLabel" text="Name Placeholder" style="-fx-text-fill: lightgray;" />
+                                  </HBox>
+                                  <HBox spacing="10">
+                                      <Label text="Used Space" style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 16px;" />
+                                      <Label fx:id="diskUsedLabel" text="Name Placeholder" style="-fx-text-fill: lightgray;" />
+                                  </HBox>
+                              </VBox>
+                              <HBox fx:id="diskChartPane" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS" />
+                          </HBox>
+                      </VBox>
+                  </content>
+              </ScrollPane>
+          </Tab>
+
+        <!-- Update Center -->
+        <Tab text="Updates">
+            <VBox spacing="20" styleClass="tab-content">
+                <StackPane fx:id="updaterGpuPanel" styleClass="popup-background">
+                    <VBox spacing="15" style="-fx-padding: 5;">
+                        <Label styleClass="section-title" style="-fx-font-size: 20px; -fx-text-fill: WHITE;" text="GPU Driver Updates" />
+                        <HBox alignment="CENTER">
+                            <Label fx:id="updateStatusLabel"
+                                   text="Please scan for driver updates!"
+                                   style="-fx-font-size: 18px; -fx-text-fill: lightgray;" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <Label text="GPU Name" style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 16px;" />
+                            <Label fx:id="updaterGpuName" text="Name Placeholder" style="-fx-text-fill: lightgray;" />
+                        </HBox>
+                        <HBox spacing="10">
+                        <Button fx:id="btnCheckUpdates" styleClass="update-button" text="Check for Updates" />
+                        <Button fx:id="btnDownloadUpdates" styleClass="update-button" text="Download Updates" disable="true"/>
+                        </HBox>
+
+                    </VBox>
+                </StackPane>
+                <StackPane fx:id="updaterGeneralPanel" styleClass="popup-background">
+                    <VBox spacing="15" style="-fx-padding: 5;">
+                        <Label styleClass="section-title" style="-fx-font-size: 20px; -fx-text-fill: WHITE;" text="Microsoft Driver Updates" />
+                        <HBox alignment="CENTER">
+                            <Label fx:id="updateMStatusLabel"
+                                   text="Check drivers that needs to be updated!"
+                                   style="-fx-font-size: 18px; -fx-text-fill: lightgray;" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <Button fx:id="btnCheckUpdatesMicro" styleClass="update-button" text="Check for Updates" />
+                            <Button fx:id="btnClearUpdatesMicro" styleClass="update-button" text="Clear Drivers List" disable="true"/>
+                        </HBox>
+                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="400.0" styleClass="scroll-pane-duplicates" VBox.vgrow="ALWAYS">
+                            <content>
+                                <VBox fx:id="driverUpdatesEntries" spacing="5" style="-fx-background-color: transparent; -fx-padding: 10" />
+                            </content>
+                            <VBox.margin>
+                                <Insets />
+                            </VBox.margin>
+                        </ScrollPane>
+                    </VBox>
+                </StackPane>
+            </VBox>
+        </Tab>
+      </tabs>
+    </TabPane>
+  </center>
+</BorderPane>

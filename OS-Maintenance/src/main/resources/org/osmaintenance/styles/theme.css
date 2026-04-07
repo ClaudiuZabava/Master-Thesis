@@ -1,0 +1,289 @@
+.main-background {
+    -fx-background-color: linear-gradient(to bottom right, #181926, #23263a);
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}
+
+.top-header {
+    -fx-font-size: 24px;
+    -fx-text-fill: #9d9eff;
+    -fx-padding: 3px 0;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+.tab-pane {
+    -fx-background-color: transparent;
+}
+
+.tab-content {
+    -fx-padding: 20;
+    -fx-background-color: #1e1f2f;
+    -fx-border-width: 2;
+    -fx-border-radius: 0 0 10 10;
+    -fx-background-radius: 0 0 10 10;
+}
+
+.section-title {
+    -fx-font-size: 16px;
+    -fx-text-fill: #ccd1ff;
+    -fx-font-weight: bold;
+}
+
+.label {
+    -fx-text-fill: #ddddff;
+}
+
+.button {
+    -fx-background-color: #3b3f70;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-background-radius: 6;
+}
+
+.button:hover {
+    -fx-background-color: #3e61ce;
+}
+.popup-background {
+    -fx-background-color: linear-gradient(to bottom, #23263a, #1c1d2c);
+    -fx-border-color: #3a3d5c;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 15;
+}
+
+.popup-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #bcbcff;
+}
+
+.popup-label {
+    -fx-text-fill: #ddddff;
+}
+
+.exit-button {
+    -fx-background-color: #4d2f3a;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.exit-button:hover {
+    -fx-background-color: #813843;
+}
+
+.tab-pane .tab-header-area {
+    -fx-background-color: #1e1f2f; /* Dark matching background */
+    -fx-padding: 0 5 0 10;         /* Reduce top/bottom padding */
+    -fx-border-color: transparent transparent  #3b3f70 transparent; /* light blue underline */
+    -fx-border-width: 0 0 2 0;    /* Thinner bottom border */
+}
+
+/* Optional: Reduce header tab area height */
+.tab-pane .tab-header-background {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-min-height: 30px;
+    -fx-pref-height: 30px;
+}
+
+.tab-pane .tab-header-area .tab {
+    -fx-background-color: #3b3f70;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 5 15;
+    -fx-background-insets: 0;
+    -fx-border-radius: 6 6 0 0;
+    -fx-background-radius: 6 6 0 0;
+    -fx-border-width: 1 1 0 1;
+    -fx-border-color: #2c2d42;
+}
+
+.tab-pane .tab-header-area .tab:selected {
+    -fx-background-color: #3e61ce;
+    -fx-text-fill:  white;
+}
+
+.tab-pane .tab-label {
+    -fx-text-fill: inherit;
+}
+
+.custom-title-bar {
+    -fx-background-color: #1e1f2f;
+    -fx-padding: 6 10;
+    -fx-alignment: center-left;
+    -fx-background-radius: 10 10 0 0;
+}
+
+.window-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ccccff;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 4 8;
+    -fx-background-radius: 4;
+}
+
+.window-button:hover {
+    -fx-background-color: #3e61ce;
+    -fx-text-fill: white;
+}
+
+/* Sidebar VBox: removes spacing between buttons */
+.sidebar {
+    -fx-spacing: 0;
+    -fx-background-color: #3b3f70;
+    -fx-background-radius: 5;
+    -fx-pref-height: 300;
+    -fx-pref-width: 180;
+    -fx-padding: 5 0 0 0;
+}
+
+/* Sidebar Buttons: full-width, no rounded corners, consistent size */
+.sidebar-button {
+    -fx-background-color: #3b3f70;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 0;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 0 0 15;
+    -fx-pref-height: 50;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #4d5391;
+}
+
+.sidebar-button.selected {
+    -fx-background-color: #3e61ce;
+}
+
+.sidebar-box {
+    -fx-alignment: TOP_CENTER;
+}
+
+.duplicate-scan-button {
+    -fx-background-color: #4d5391;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-padding: 20px 40px;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+}
+
+/* When button is pressed */
+.duplicate-scan-button:pressed {
+    -fx-background-color: #4d5391;
+}
+.duplicate-scan-button:hover {
+    -fx-background-color: #3e61ce;
+}
+
+.unused-scan-button {
+    -fx-background-color: #4d5391;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-padding: 20px 40px;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+}
+
+/* When button is pressed */
+.unused-scan-button:pressed {
+    -fx-background-color: #4d5391;
+}
+.unused-scan-button:hover {
+    -fx-background-color: #3e61ce;
+}
+
+.cleaner-top-grid {
+    -fx-grid-lines-visible: false;
+    -fx-background-color:#3b3f70 ;
+}
+
+.storage-number {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+.storage-unit {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 0 0 0 4;
+}
+
+.scanned-unit {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #cccccc;
+    -fx-padding: 0 0 0 4;
+}
+
+.storage-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #cccccc;
+}
+
+.scan-button {
+    -fx-background-color: #3e61ce;
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-cursor: hand;
+    -fx-background-radius: 5;
+    -fx-font-weight: normal;
+}
+
+.scan-button:hover {
+    -fx-background-color: #5176e8;
+    -fx-text-fill: white;
+}
+
+.scroll-pane-duplicates {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.scroll-pane-duplicates > .viewport {
+    -fx-background-color: transparent;
+}
+
+.default-color0.chart-pie {
+    -fx-pie-color: #0077ff; /* Light blue for "Used" */
+}
+
+.default-color1.chart-pie {
+    -fx-pie-color: transparent; /* Transparent for "Free" */
+}
+
+.popup-button {
+    -fx-background-color: #3b3f70;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-pref-height: 60px;
+    -fx-background-radius: 12px;
+    -fx-cursor: hand;
+}
+
+.popup-button:hover {
+    -fx-background-color: #3e61ce;
+}
+
+.exit-button {
+    -fx-background-color: #8b0000;
+    -fx-text-fill: white;
+    -fx-pref-height: 50px;
+    -fx-background-radius: 10px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
